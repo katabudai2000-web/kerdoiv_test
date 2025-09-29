@@ -247,7 +247,7 @@ elif page == 1:
     if st.session_state.group == "text":
         st.markdown(TEXT_OFFERS["Prága"])
     else:
-        st.image(IMAGES["Prága"], caption=CAPTIONS["Prága"], use_column_width=True)
+        st.image(IMAGES["Prága"], caption=CAPTIONS["Prága"], use_container_width=True)
 
     nav(prev=0, next=2)
 
@@ -260,7 +260,7 @@ elif page == 2:
     if st.session_state.group == "text":
         st.markdown(TEXT_OFFERS["Barcelona"])
     else:
-        st.image(IMAGES["Barcelona"], caption=CAPTIONS["Barcelona"], use_column_width=True)
+        st.image(IMAGES["Barcelona"], caption=CAPTIONS["Barcelona"], use_container_width=True)
 
     nav(prev=1, next=3)
 
@@ -272,7 +272,7 @@ elif page == 3:
     if st.session_state.group == "text":
         st.markdown(TEXT_OFFERS["Róma"])
     else:
-        st.image(IMAGES["Róma"], caption=CAPTIONS["Róma"], use_column_width=True)
+        st.image(IMAGES["Róma"], caption=CAPTIONS["Róma"], use_container_width=True)
 
     nav(prev=2, next=4)
 
@@ -639,5 +639,36 @@ st.markdown("""
 }
 </style>
 """, unsafe_allow_html=True)
+# ---------- CLEAN MODE (extra erős) ----------
+
+HIDE_UI = """
+<style>
+/* Menü, footer, header */
+#MainMenu {visibility: hidden !important;}
+footer {visibility: hidden !important;}
+header {visibility: hidden !important;}
+
+/* Deploy, Fork, GitHub, Share, Crown badge */
+.stDeployButton, .stAppDeployButton, .stShareButton {display: none !important;}
+[data-testid="stDecoration"] {display: none !important;}
+[data-testid="stToolbar"] {display: none !important;}
+[data-testid="stStatusWidget"] {display: none !important;}
+[data-testid="stSidebarCollapseButton"] {display: none !important;}
+[data-testid="stHeaderActionButtons"] {display: none !important;}
+[data-testid="stActionButton"] {display: none !important;}
+button[kind="header"] {display: none !important;}
+
+/* Accessibility / villogó ikonok */
+[class*="accessibility"] {display: none !important;}
+[class*="stAppFloatingActionButton"] {display: none !important;}
+[title="Accessibility"] {display: none !important;}
+[title="Open settings"] {display: none !important;}
+
+/* Plusz margó fix */
+.block-container {padding-top: 1rem;}
+</style>
+"""
+import streamlit as st
+st.markdown(HIDE_UI, unsafe_allow_html=True)
 
 
