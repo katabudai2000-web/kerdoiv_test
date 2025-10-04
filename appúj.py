@@ -1033,25 +1033,52 @@ div[data-baseweb="select"] {
     background-color: #ff2a2a !important;
 }
 
-/* --- Mobil optimalizálás --- */
+/* --- Mobil optimalizálás: valóban arányosított skála --- */
 @media (max-width: 768px) {
-    /* Rádiógombok mobilon oszloposan */
-    .stRadio > div {
-        flex-direction: column !important;
-        align-items: flex-start !important;
+
+    /* Szövegek kisebb, arányos méretben */
+    p, .stMarkdown, .stText, .stHeader, .stSubheader {
+        font-size: 14px !important;
+        line-height: 1.35em !important;
     }
+
+    /* Rádiógombok egy sorban, sűrítve */
+    .stRadio > div {
+        flex-wrap: nowrap !important;
+        justify-content: space-evenly !important;
+        align-items: center !important;
+        gap: 1px !important;
+    }
+
+    /* Számok kisebbek, de olvashatók */
     .stRadio label {
-        font-size: 18px !important;
+        font-size: 14px !important;
+        padding: 1px !important;
+        margin-right: 1px !important;
+        transform: scale(0.9);
+    }
+
+    /* Rádiók ténylegesen kisebb méretben */
+    input[type="radio"] {
+        width: 15px !important;
+        height: 15px !important;
+        transform: scale(0.85);
+    }
+
+    /* Gombok kicsit karcsúsítva, hogy ne tolják szét az oldalt */
+    .stButton>button {
+        min-width: 48%;
+        font-size: 14px !important;
         padding: 6px 0 !important;
     }
 
-    /* Gombok teljes szélességben mobilon */
-    .stButton>button {
-        width: 100% !important;
-        font-size: 18px !important;
-        padding: 12px !important;
+    /* Oldalmargók mobilon sűrítve */
+    .block-container {
+        padding-left: 0.4rem !important;
+        padding-right: 0.4rem !important;
     }
 }
+
 
 </style>
 """, unsafe_allow_html=True)
