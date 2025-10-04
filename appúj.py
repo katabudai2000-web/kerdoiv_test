@@ -1001,13 +1001,6 @@ elif page == TOTAL_PAGES:
     # --- mentés ---
     save_row(record)
 
-    st.download_button(
-        "⬇️ Kitöltés letöltése (XLSX)",
-        data=open("responses.xlsx", "rb").read(),
-        file_name="responses.xlsx",
-        mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-    )
-
     st.stop()
 
 
@@ -1039,5 +1032,26 @@ div[data-baseweb="select"] {
 .stButton>button:hover {
     background-color: #ff2a2a !important;
 }
+
+/* --- Mobil optimalizálás --- */
+@media (max-width: 768px) {
+    /* Rádiógombok mobilon oszloposan */
+    .stRadio > div {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+    }
+    .stRadio label {
+        font-size: 18px !important;
+        padding: 6px 0 !important;
+    }
+
+    /* Gombok teljes szélességben mobilon */
+    .stButton>button {
+        width: 100% !important;
+        font-size: 18px !important;
+        padding: 12px !important;
+    }
+}
+
 </style>
 """, unsafe_allow_html=True)
